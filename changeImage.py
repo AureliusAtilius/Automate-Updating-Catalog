@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import requests
 from PIL import Image
 from pathlib import Path
 
@@ -12,6 +13,10 @@ def imageReformat(file):
                 #cannot convert from TIFF to JPEG, must convert to RGB first
                 resized_im = resized_im.convert("RGB")
         
-                resized_im.save("<filepath>"+filename, format= "JPEG")
+                resized_im.save("~/supplier-data/images/"+filename, format= "JPEG")
+        
 
-                #TODO: Upload to web service
+                
+if __name__=="__main__":
+        for file in os.listdir("~/supplier-data/images"):
+                imageReformat(file)
