@@ -2,7 +2,7 @@
 import requests
 import os
 def imageUploader(image):
-        url= "http://[linux-instance-IP-Address]/upload"
+        url= "http://[linux-instance-IP-Address]/upload"    #TODO: Add IP
         with open(image,"rb") as image:
                r= requests.post(url, files={"file":image})
 
