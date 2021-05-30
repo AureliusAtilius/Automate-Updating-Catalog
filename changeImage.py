@@ -12,7 +12,7 @@ def imageReformat(file):
                 resized_im = resized_im.convert("RGB")
 
                 resized_im.save(filename+'.jpeg', format= "JPEG")
-                os.remove("/home/{}/supplier-data/images/".format(os.environ.get('USER'))+filename+fileExt)
+                os.remove(filename+fileExt)
 
                 
 if __name__=="__main__":
