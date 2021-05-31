@@ -6,7 +6,7 @@ import mimetypes
 
 def generate_email(sender, recipient, subject, body, attachment_path):
         # Basic Email formatting
-        """Creates an email with an attachement."""
+        #Creates an email with an attachement.
         message = email.message.EmailMessage()
         message["From"] = sender
         message["To"] = recipient
@@ -28,17 +28,9 @@ def generate_email(sender, recipient, subject, body, attachment_path):
         return message
 
 def send(message):
-        """Sends the message to the configured SMTP server."""
+        # Sends the message to the configured SMTP server.
         mail_server = smtplib.SMTP('localhost')
         mail_server.send_message(message)
         mail_server.quit()
 
-if __name__=="__main__":
-        sender="automation@example.com"
-        recipient = "{}@example.com".format(os.environ.get('USER'))
-        subject = "Upload Completed - Online Fruit Store"
-        body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
-        attachment_path = "/tmp/processed.pdf"
 
-        message = generate_email(sender, recipient, subject, body, attachment_path)
-        send(message)

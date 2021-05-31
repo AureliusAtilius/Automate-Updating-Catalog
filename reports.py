@@ -5,6 +5,7 @@ from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
+# Create pdf report from processed data
 def generate_report(attachment, title,body):
         styles = getSampleStyleSheet()
         report = SimpleDocTemplate(attachment)     

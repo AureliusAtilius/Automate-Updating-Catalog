@@ -3,9 +3,13 @@ import requests
 import os
 
 def processDescription(file):
+
+        # Split filename and file extension
         filename, fileExt = os.path.splitext(file)
         file=("/home/{}/supplier-data/descriptions/".format(os.environ.get('USER'))+file)
         jsonobj={}
+        
+        # Parse file information and convert to .json dictionary
         with open(file,"r") as file:
                 lines = file.readlines()
                 jsonobj["name"]=lines[0].rstrip("\n")
@@ -15,9 +19,14 @@ def processDescription(file):
         return jsonobj
 
 def uploadDescription(jsonobj):
-        url="http://[linux-instance-IP-Address]/fruits/"   #TODO: Add IP
+
+        # URL descriptions will be posted to.
+        url="http://[linux-instance-IP-Address]/fruits/"   
+        
+        # Post
         response= requests.post(url, json=jsonobj)  
         print(response.status_code)
+
 if __name__=="__main__":
         for file in os.listdir("/home/{}/supplier-data/descriptions/".format(os.environ.get('USER'))):
                 processed=processDescription(file)
